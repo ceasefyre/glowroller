@@ -17,7 +17,7 @@ def tst_callback(channel):
 GPIO.add_event_detect(btn1, GPIO.FALLING, callback=tst_callback, bouncetime=300)
 GPIO.add_event_detect(btn2, GPIO.FALLING, callback=tst_callback, bouncetime=300)
 
-running = true;
+running = True;
 
 try:
     while(running):
