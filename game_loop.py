@@ -1,6 +1,8 @@
 # main loop to control the game
 
 import RPi.GPIO as GPIO
+import time
+
 GPIO.setmode(GPIO.BCM)
 
 btn1 = 17
@@ -20,7 +22,7 @@ running = true;
 try:
     while(running):
         #main loop hapenning here, with event interrupts defined above
-
+        time.sleep(.01)
 
 except KeyboardInterrupt:
     GPIO.cleanup()  #Cleaning up when Ctrl-C
