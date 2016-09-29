@@ -39,7 +39,7 @@ btn_cb = {
 }
 
 #iterate the pins dict and set them up with their callbacks
-for button in btn_pins
+for button in btn_pins:
     GPIO.setup(btn_pins[button], GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.add_even_detect(btn_pins[button], GPIO.FALLING, callback=btn_cb[btn_pins[button]], bouncetime=btn_bounce)
 
