@@ -11,10 +11,10 @@ GPIO.setmode(GPIO.BCM)
 #Assign the buttons to GPIO pins
 #NOTE: do NOT duplicate pins across buttons
 btn_pins = {
-    'btn1' = 17,
-    'btn2' = 18,
-    'btn3' = 27,
-    'btn4' = 23
+    'btn1': 17,
+    'btn2': 18,
+    'btn3': 27,
+    'btn4': 23
 }
 
 #button bounceback time for callback triggers
@@ -32,16 +32,16 @@ def cb_cease_polling(channel):
 
 #set the callbacks for the interrupts
 btn_cb = {
-    btn_pins['btn1'].value : cb_test,
-    btn_pins['btn2'].value : cb_test,
-    btn_pins['btn3'].value : cb_test,
-    btn_pins['btn4'].value : cb_cease_polling
+    btn_pins['btn1']: cb_test,
+    btn_pins['btn2']: cb_test,
+    btn_pins['btn3']: cb_test,
+    btn_pins['btn4']: cb_cease_polling
 }
 
 #iterate the pins dict and set them up with their callbacks
-for button in btn_pins:
-    GPIO.setup(btn_pins[button], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_even_detect(btn_pins[button], GPIO.FALLING, callback=btn_cb[btn_pins[button]], bouncetime=btn_bounce)
+for btn in btn_pins:
+    GPIO.setup(btn_pins[btn], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.add_even_detect(btn_pins[btn], GPIO.FALLING, callback=btn_cb[btn_pins[btn]], bouncetime=btn_bounce)
 
 try:
     while(running):
