@@ -28,7 +28,8 @@ def cb_test(channel):
 
 def cb_cease_polling(channel):
     cb_test(channel)
-    global running = False
+    global running
+    running = False
 
 #set the callbacks for the interrupts
 btn_cb = {
