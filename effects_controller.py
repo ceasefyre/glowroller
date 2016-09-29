@@ -2,5 +2,5 @@
 
 #main effects functions def file
 
-import Effects
+
 

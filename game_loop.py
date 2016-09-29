@@ -32,10 +32,10 @@ def cb_cease_polling(channel):
 
 #set the callbacks for the interrupts
 btn_cb = dict(
-    btn_pins['btn1'] : cb_test,
-    btn_pins['btn2'] : cb_test,
-    btn_pins['btn3'] : cb_test,
-    btn_pins['btn4'] : cb_cease_polling
+    btn_pins['btn1'].value : cb_test,
+    btn_pins['btn2'].value : cb_test,
+    btn_pins['btn3'].value : cb_test,
+    btn_pins['btn4'].value : cb_cease_polling
 )
 
 #iterate the pins dict and set them up with their callbacks
