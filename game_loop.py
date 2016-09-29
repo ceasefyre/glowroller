@@ -10,12 +10,12 @@ GPIO.setmode(GPIO.BCM)
 
 #Assign the buttons to GPIO pins
 #NOTE: do NOT duplicate pins across buttons
-btn_pins = dict(
+btn_pins = {
     'btn1' = 17,
     'btn2' = 18,
     'btn3' = 27,
     'btn4' = 23
-)
+}
 
 #button bounceback time for callback triggers
 btn_bounce = 300
