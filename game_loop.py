@@ -21,8 +21,10 @@ btn_pins = {
 
 #button bounceback time for callback triggers
 btn_bounce = 300
+#Global variable for the client
+server = 'da3-lightpi.local:7890'
 
-#
+#Flag to indicate keep main loop going
 running = True
 
 def cb_test(channel):
