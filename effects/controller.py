@@ -9,16 +9,43 @@ from time import sleep
 import opc
 
 class Effect(metaclass=ABCMeta):
-    def __init__(self, name, nRepeats)
-        self.name = name
-        self.nRepeats = nRepeats
-        self.client = opc.Client(global.server)
+    def __init__(self, **kwargs):
+        if global.server is None:
+            kwargs.setdefault('server', '127.0.0.1:7890')
+        else:
+            kwargs.setdefault('server', global.server)
+        kwargs.setdefault('name', 'unnamedEffect')
+        kwargs.setdefault('runcount', 0)
+        for k in kwargs.keys():
+            self.__setattr__(k, kwargs[k])
     
-    def get_name(self):
-        return self.name
-    def get_isRepeated(self):
-        return self.isRepeated
+    #name getter/setter
+    @property
+    def name(self):
+        return self.__name
+    @name.setter
+    def name(self, name):
+        self.__name = name
     
+    #server geter/setter
+    @property
+    def server(self):
+        if global.server is None:
+            return self.__server
+        else:
+            return global.server
+    @server.setter
+    def server(self, server):
+        self.__server = server
+    
+    #runcount getter/setter
+    @property
+    def runcount(self):
+        return self.__runcount
+    @runcount.setter
+    def runcount(self, runcount):
+        self.__runcount = runcount
+
     @abstractmethod
     def do_effect(self): pass
     #this method should be overridden and is the main 'effect loop'

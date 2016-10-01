@@ -28,7 +28,7 @@ server = 'da3-lightpi.local:7890'
 running = True
 
 def cb_test(channel):
-    print "Button Press (Falling Switch) detected on channel " + str(channel)
+    print "Button Press (Falling Switch) detected on channel "+str(channel)
 
 def cb_cease_polling(channel):
     cb_test(channel)
