@@ -35,7 +35,7 @@ def cb_testChase(channel):
     print "Creating class of chase"
     fx_chase = fx.chase(iterations=2, server=server, name="chase")
     print "Starting loop"
-    fx_chase.start
+    fx_chase.start()
 
 
 def cb_cease_polling(channel):
