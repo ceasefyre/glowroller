@@ -11,12 +11,7 @@ import utils.opc
 class effect(object):
     __metaclass__ = ABCMeta
     def __init__(self, **kwargs):
-        global server
-
-        if server is None:
-            kwargs.setdefault('server', '127.0.0.1:7890')
-        else:
-            kwargs.setdefault('server', server)
+        kwargs.setdefault('server', '127.0.0.1:7890')
         kwargs.setdefault('name', 'unnamedEffect')
         kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
@@ -43,4 +38,3 @@ class effect(object):
         self.__client = opc.Client(self.__server)
         while not self.__client.can_connect():
             pass
-            

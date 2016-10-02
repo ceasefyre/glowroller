@@ -7,7 +7,6 @@ import time
 import effects.controller
 import effects.lib1 as fx
 
-global server
 GPIO.setmode(GPIO.BCM)
 
 #Assign the buttons to GPIO pins
@@ -33,7 +32,7 @@ def cb_test(channel):
     print "Button Press (Falling Switch) detected on channel "+str(channel)
 
 def cb_testChase(channel):
-    fx_chase = fx.chase(iterations=2)
+    fx_chase = fx.chase(iterations=2, server=server)
     fx_chase.start
 
 
