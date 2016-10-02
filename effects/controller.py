@@ -10,6 +10,10 @@ import utils.opc
 
 class effect(object):
     __metaclass__ = ABCMeta
+    
+    def threadLoop(self):
+        self.do_effect(self.__iterations)
+    
     def __init__(self, **kwargs):
         kwargs.setdefault('server', '127.0.0.1:7890')
         kwargs.setdefault('name', 'unnamedEffect')
@@ -30,9 +34,6 @@ class effect(object):
 
     def stop(self):
         self.__running = False
-
-    def threadLoop(self):
-        self.do_effect(self.__iterations)
     
     def connectOPC(self):
         self.__client = opc.Client(self.__server)
