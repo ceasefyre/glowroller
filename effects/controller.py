@@ -26,8 +26,10 @@ class effect(object):
 
     def start(self):
         #initiate the effect loop in new thread
+        print "Starting effect " + self.name
         self.running = True
         self.thread.start()
+        print "Thread started"
 
     def stop(self):
         self.running = False
