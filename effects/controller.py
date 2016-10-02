@@ -6,49 +6,37 @@
 from abc import ABCMeta, abstractmethod
 from threading import Thread
 from time import sleep
-import opc
+import utils.opc
 
-class Effect(metaclass=ABCMeta):
+class effect(metaclass=ABCMeta):
     def __init__(self, **kwargs):
         if global.server is None:
             kwargs.setdefault('server', '127.0.0.1:7890')
         else:
             kwargs.setdefault('server', global.server)
         kwargs.setdefault('name', 'unnamedEffect')
-        kwargs.setdefault('runcount', 0)
+        kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
             self.__setattr__(k, kwargs[k])
+        self.__thread = Thread(name=self.__name, target=threadLoop)
     
-    #name getter/setter
-    @property
-    def name(self):
-        return self.__name
-    @name.setter
-    def name(self, name):
-        self.__name = name
-    
-    #server geter/setter
-    @property
-    def server(self):
-        if global.server is None:
-            return self.__server
-        else:
-            return global.server
-    @server.setter
-    def server(self, server):
-        self.__server = server
-    
-    #runcount getter/setter
-    @property
-    def runcount(self):
-        return self.__runcount
-    @runcount.setter
-    def runcount(self, runcount):
-        self.__runcount = runcount
-
     @abstractmethod
-    def do_effect(self): pass
+    def do_effect(self, iterations): pass
     #this method should be overridden and is the main 'effect loop'
+    #connecting to the host and thread control is taken care of by the rest of the class
 
     def start(self):
         #initiate the effect loop in new thread
+        self.__running = True
+        self.__thread.start
+
+    def stop(self):
+        self.__running = False
+
+    def threadLoop(self):
+        self.do_effect(self.__iterations)
+    
+    def connectOPC(self):
+        self.__client = opc.Client(self.__server)
+        while !self.__client.can_connect():
+            

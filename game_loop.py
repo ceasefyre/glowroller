@@ -4,7 +4,8 @@
 
 import RPi.GPIO as GPIO
 import time
-import effects_controller as fx
+import effects.controller
+import effects.lib1 as fx
 
 GPIO.setmode(GPIO.BCM)
 
@@ -29,6 +30,11 @@ running = True
 
 def cb_test(channel):
     print "Button Press (Falling Switch) detected on channel "+str(channel)
+
+def cb_testChase(channel):
+    fx_chase = fx.chase(iterations=2)
+    fx_chase.start
+
 
 def cb_cease_polling(channel):
     cb_test(channel)
