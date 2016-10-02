@@ -3,7 +3,7 @@ import time
 
 class chase(controller.effect):
     def __init__(self, **kwargs):
-        super(self).__init__(kwargs)
+        super(chase,self).__init__(**kwargs)
 
     def do_effect(self, iterations):
         i = iterations
