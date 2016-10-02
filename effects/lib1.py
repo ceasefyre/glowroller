@@ -8,8 +8,6 @@ class chase(controller.effect):
     def do_effect(self, iterations):
         i = iterations
         
-        i += 1
-        
         numLEDs = 64
         while self.running:
             while i>0:
@@ -20,3 +18,8 @@ class chase(controller.effect):
                     pixels[n] = (255, 255, 255)
                     self.client.put_pixels(pixels)
                     time.sleep(0.01)
+                pixels[numLEDs] = (0,0,0)
+                if not self.running:
+                    return
+                if i < 0:
+                    i = 0
