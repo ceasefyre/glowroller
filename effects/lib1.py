@@ -7,9 +7,9 @@ class chase(controller.effect):
 
     def do_effect(self, iterations):
         i = iterations
-        
+        over = False
         numLEDs = 64
-        while self.running:
+        while self.running and not over:
             while i>0:
                 i -= 1
                 print "running effect " + self.name + " for iteration# " + str(i)
@@ -24,3 +24,4 @@ class chase(controller.effect):
                     return
                 if i < 0:
                     i = 0
+            over = True #non-release once finished needed an escape
