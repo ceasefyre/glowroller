@@ -1,8 +1,8 @@
 import controller
 import time
 
-class chase(controller.effect, **kwargs):
-    def __init__(self):
+class chase(controller.effect):
+    def __init__(self, **kwargs):
         super(self).__init__(kwargs)
 
     def do_effect(self, iterations):
