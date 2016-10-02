@@ -18,7 +18,7 @@ class effect(object):
         kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
             self.__setattr__(k, kwargs[k])
-            print "set attr " + k + " to be " + kwargs[k]
+            print "set attr " + k + " to be " + str(kwargs[k])
         self.thread = Thread(name=self.name, target=self.threadLoop)
     
     @abstractmethod
