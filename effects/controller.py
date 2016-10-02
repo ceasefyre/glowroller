@@ -10,7 +10,7 @@ import utils.opc
 
 class effect(object):
     __metaclass__ = ABCMeta
-
+    global server
     def __init__(self, **kwargs):
         if global.server is None:
             kwargs.setdefault('server', '127.0.0.1:7890')
