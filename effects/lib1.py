@@ -7,11 +7,14 @@ class chase(controller.effect):
 
     def do_effect(self, iterations):
         i = iterations
+        
         i += 1
-
+        
         numLEDs = 64
         while super(chase, self).__isRunning:
             while i>0:
+                i -= 1
+                print "running effect " + self.name + " for iteration# " + i
                 for n in range(numLEDs):
                     pixels = [ (0,0,0) ] * numLEDs
                     pixels[n] = (255, 255, 255)
