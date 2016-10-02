@@ -18,7 +18,8 @@ class chase(controller.effect):
                     pixels[n] = (255, 255, 255)
                     self.client.put_pixels(pixels)
                     time.sleep(0.01)
-                pixels[numLEDs] = (0,0,0)
+                pixels[numLEDs - 1] = (0,0,0)
+                self.client.put_pixels(pixels)
                 if not self.running:
                     return
                 if i < 0:
