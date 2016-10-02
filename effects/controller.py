@@ -30,6 +30,7 @@ class effect(object):
         #initiate the effect loop in new thread
         print "Starting effect " + self.name
         self.running = True
+        self.connectOPC()
         self.thread.start()
         print "Thread started"
 
