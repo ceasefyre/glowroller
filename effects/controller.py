@@ -41,6 +41,6 @@ class effect(object):
         self.do_effect(self.iterations)
 
     def connectOPC(self):
-        self.client = opc.Client(self.__server)
+        self.client = utils.opc.Client(self.__server)
         while not self.client.can_connect():
             pass
