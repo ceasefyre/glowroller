@@ -18,5 +18,5 @@ class chase(controller.effect):
                 for n in range(numLEDs):
                     pixels = [ (0,0,0) ] * numLEDs
                     pixels[n] = (255, 255, 255)
-                    super(chase, self).__client.put_pixels(pixels)
+                    super(chase, self).client.put_pixels(pixels)
                     time.sleep(0.01)

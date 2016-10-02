@@ -17,7 +17,7 @@ class effect(object):
         kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
             self.__setattr__(k, kwargs[k])
-        self.__thread = Thread(name=self.name, target=self.threadLoop)
+        self.thread = Thread(name=self.name, target=self.threadLoop)
     
     @abstractmethod
     def do_effect(self, iterations): pass
@@ -26,16 +26,16 @@ class effect(object):
 
     def start(self):
         #initiate the effect loop in new thread
-        self.__running = True
-        self.__thread.start
+        self.running = True
+        self.thread.start
 
     def stop(self):
-        self.__running = False
+        self.running = False
     
     def threadLoop(self):
-        self.do_effect(self.__iterations)
+        self.do_effect(self.iterations)
 
     def connectOPC(self):
-        self.__client = opc.Client(self.__server)
-        while not self.__client.can_connect():
+        self.client = opc.Client(self.__server)
+        while not self.client.can_connect():
             pass
