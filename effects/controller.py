@@ -8,7 +8,9 @@ from threading import Thread
 from time import sleep
 import utils.opc
 
-class effect(metaclass=ABCMeta):
+class effect(object):
+    __metaclass__ = ABCMeta
+
     def __init__(self, **kwargs):
         if global.server is None:
             kwargs.setdefault('server', '127.0.0.1:7890')
