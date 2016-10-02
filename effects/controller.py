@@ -12,11 +12,11 @@ class effect(object):
     __metaclass__ = ABCMeta
     def __init__(self, **kwargs):
         global server
-        
+
         if server is None:
             kwargs.setdefault('server', '127.0.0.1:7890')
         else:
-            kwargs.setdefault('server', global.server)
+            kwargs.setdefault('server', server)
         kwargs.setdefault('name', 'unnamedEffect')
         kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
