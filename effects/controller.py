@@ -42,4 +42,5 @@ class effect(object):
     def connectOPC(self):
         self.__client = opc.Client(self.__server)
         while not self.__client.can_connect():
+            pass
             
