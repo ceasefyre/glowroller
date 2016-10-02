@@ -32,7 +32,7 @@ def cb_test(channel):
     print "Button Press (Falling Switch) detected on channel "+str(channel)
 
 def cb_testChase(channel):
-    fx_chase = fx.chase(iterations=2, server=server)
+    fx_chase = fx.chase(iterations=2, server=server, name="chase")
     fx_chase.start
 
 
