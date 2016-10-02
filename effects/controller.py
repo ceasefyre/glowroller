@@ -12,11 +12,13 @@ class effect(object):
     __metaclass__ = ABCMeta
     
     def __init__(self, **kwargs):
+        print "in effect super init"
         kwargs.setdefault('server', '127.0.0.1:7890')
         kwargs.setdefault('name', 'unnamedEffect')
         kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
             self.__setattr__(k, kwargs[k])
+            print "set attr " + k + " to be " + kwargs[k]
         self.thread = Thread(name=self.name, target=self.threadLoop)
     
     @abstractmethod
