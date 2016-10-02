@@ -16,7 +16,7 @@ class effect(object):
         kwargs.setdefault('iterations', 0) #0 being infinite
         for k in kwargs.keys():
             self.__setattr__(k, kwargs[k])
-        self.__thread = Thread(name=self.__name, target=threadLoop)
+        self.__thread = Thread(name=self.name, target=threadLoop)
     
     @abstractmethod
     def do_effect(self, iterations): pass
