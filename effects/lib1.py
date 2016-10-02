@@ -11,7 +11,7 @@ class chase(controller.effect):
         i += 1
         
         numLEDs = 64
-        while super(chase, self).__isRunning:
+        while super(chase, self).isRunning:
             while i>0:
                 i -= 1
                 print "running effect " + self.name + " for iteration# " + i
