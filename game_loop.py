@@ -54,8 +54,8 @@ btn_cb = {
 
 #iterate the pins dict and set them up with their callbacks
 for btn in btn_pins:
-    GPIO.setup(btn_pins[btn], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.add_event_detect(btn_pins[btn], GPIO.RISING, callback=btn_cb[btn_pins[btn]], bouncetime=btn_bounce)
+    GPIO.setup(btn_pins[btn], GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.add_event_detect(btn_pins[btn], GPIO.FALLING, callback=btn_cb[btn_pins[btn]], bouncetime=btn_bounce)
 
 try:
     while(running):
