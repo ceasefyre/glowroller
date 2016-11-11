@@ -13,11 +13,10 @@ GPIO.setmode(GPIO.BCM)
 #NOTE: do NOT duplicate pins across buttons
 btn_pins = {
     'btn1': 17,
-    'btn2': 18,
+    'btn2': 22,
     'btn3': 27,
-    'btn4': 23,
-    'btn5': 4,
-    'btn6': 24
+    'btn4': 4,
+    'btn5': 21
 }
 
 #button bounceback time for callback triggers
@@ -50,8 +49,7 @@ btn_cb = {
     btn_pins['btn2']: cb_test,
     btn_pins['btn3']: cb_test,
     btn_pins['btn4']: cb_test,
-    btn_pins['btn5']: cb_test,
-    btn_pins['btn6']: cb_cease_polling
+    btn_pins['btn5']: cb_cease_polling
 }
 
 #iterate the pins dict and set them up with their callbacks
